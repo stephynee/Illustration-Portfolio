@@ -1,2 +1,19 @@
-const images = ['images/artwork/illo1.png','images/artwork/illo2.png','images/artwork/illo3.png','images/artwork/illo4.jpg','images/artwork/illo5.png','images/artwork/illo6.png','images/artwork/illo7.png','images/artwork/illo8.jpg','images/artwork/illo9.png','images/artwork/illo10.png','images/artwork/illo11.jpg','images/artwork/illo12.jpg','images/artwork/illo13.jpg','images/artwork/illo14.png','images/artwork/illo15.png','images/artwork/illo16.jpg'];
-const thumbs = ['images/thumbs/illo1@2x.png','images/thumbs/illo2@2x.png','images/thumbs/illo3@2x.png','images/thumbs/illo4@2x.png','images/thumbs/illo5@2x.png','images/thumbs/illo6@2x.png','images/thumbs/illo7@2x.png','images/thumbs/illo8@2x.png','images/thumbs/illo9@2x.png','images/thumbs/illo10@2x.png','images/thumbs/illo1@2x.png','images/thumbs/illo1@2x.png','images/thumbs/illo1@2x.png','images/thumbs/illo1@2x.png','images/thumbs/illo1@2x.png','images/thumbs/illo1@2x.png'];
+const images = ['illo1.png', 'illo2.png', 'illo3.png', 'illo4.png', 'illo5.png', 'illo6.png', 'illo7.png', 'illo8.png', 'illo9.png', 'illo10.png', 'illo11.png', 'illo12.png', 'illo13.png', 'illo14.png', 'illo15.png', 'illo16.png'];
+
+// display all images files on page
+function renderGallery(files) {
+  const galleryDiv = document.querySelector('.gallery');
+  const path = 'images/thumbs/';
+  let count = 0;
+
+  files.forEach(file => {
+    const image = document.createElement('img');
+    image.src = `${path}${file}`;
+    galleryDiv.appendChild(image);
+    count++;
+  });
+
+  console.log(count);
+}
+
+renderGallery(images);

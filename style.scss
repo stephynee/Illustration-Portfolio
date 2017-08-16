@@ -4,31 +4,58 @@ $main-font-size: 18px;
 $header-font-size: 40px;
 
 $main-content-margins: 50px;
+$gallery-spacing: 2%;
 
 $main-color: #000000;
 $secondary-color: #ffffff;
 
-// reset browser default padding and margins
 html, body {margin: 0; padding: 0;}
 
 html {
   font-family: $main-font;
   font-size: $main-font-size;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
   font-size: $header-font-size;
   font-weight: 800;
-  margin: 0 $main-content-margins;
+  margin: $main-content-margins $main-content-margins;
 }
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0 $main-content-margins;
+
+  img {
+    width: 23.5%;
+    padding: 0 $gallery-spacing $gallery-spacing 0;
+
+    &:nth-child(4n) {
+      padding-right: 0;
+    }
+  }
 }
 
 .footer {
-  padding: 0 $main-content-margins;
+  display: flex;
+  padding: 20px $main-content-margins;
+  margin-top: auto;
   background-color: $main-color;
   color: $secondary-color;
+
+  >div {
+    flex: 1;
+  }
+
+  .social {
+    text-align: right;
+  }
 }
