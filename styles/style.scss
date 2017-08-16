@@ -5,29 +5,30 @@ $header-font-size: 40px;
 
 $main-content-margins: 50px;
 $gallery-spacing: 2%;
+$mobile-content-margins: $main-content-margins / 2;
 
 $main-color: #000000;
 $secondary-color: #ffffff;
 
 html, body {margin: 0; padding: 0;}
 
-html {
-  font-family: $main-font;
-  font-size: $main-font-size;
-  box-sizing: border-box;
-  height: 100%;
-}
-
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  box-sizing: border-box;
+  font-family: $main-font;
+  font-size: $main-font-size;
 }
 
 h1 {
   font-size: $header-font-size;
   font-weight: 800;
   margin: $main-content-margins $main-content-margins;
+
+  @media (max-width: 576px) {
+    margin: $mobile-content-margins $mobile-content-margins;
+  }
 }
 
 .gallery {
@@ -41,16 +42,37 @@ h1 {
     width: 23.5%;
     padding: 0 $gallery-spacing $gallery-spacing 0;
 
-    &:nth-child(4n) {
-      padding-right: 0;
+    @media (min-width: 769px) {
+      &:nth-child(4n) {
+        padding-right: 0;
+      }
     }
+
+    @media (min-width: 577px) and (max-width: 768px) {
+      width: 32%;
+
+      &:nth-child(3n) {
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      width: 49%;
+
+      &:nth-child(2n) {
+        padding-right: 0;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    margin: 0 $mobile-content-margins;
   }
 }
 
 .footer {
   display: flex;
   padding: 20px $main-content-margins;
-  // margin-top: auto;
   background-color: $main-color;
   color: $secondary-color;
 
@@ -73,5 +95,10 @@ h1 {
     img {
       margin-left: 5px;
     }
+  }
+
+  @media (max-width: 576px) {
+    padding-left: $mobile-content-margins;
+    padding-right: $mobile-content-margins;
   }
 }
