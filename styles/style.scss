@@ -1,14 +1,4 @@
-// variables
-$main-font: 'Raleway', sans-serif;
-$main-font-size: 14px;
-$header-font-size: 40px;
-
-$main-content-margins: 50px;
-$gallery-spacing: 2%;
-$mobile-content-margins: $main-content-margins / 2;
-
-$main-color: #000000;
-$secondary-color: #ffffff;
+@import "variables";
 
 html, body {margin: 0; padding: 0;}
 
@@ -95,9 +85,18 @@ h1 {
     img {
       margin-left: 5px;
     }
+
+    @media (max-width: 576px) {
+      justify-content: flex-start;
+
+      img {
+        margin: 0 5px 0 0;
+      }
+    }
   }
 
   @media (max-width: 576px) {
+    flex-direction: column-reverse;
     padding-left: $mobile-content-margins;
     padding-right: $mobile-content-margins;
   }
