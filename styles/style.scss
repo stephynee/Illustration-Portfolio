@@ -26,11 +26,12 @@ h1 {
   flex-wrap: wrap;
   align-items: flex-start;
   flex: 1;
-  margin: 0 $main-content-margins;
+  margin: 0 $main-content-margins 10px $main-content-margins;
 
   img {
     width: 23.5%;
     padding: 0 $gallery-spacing $gallery-spacing 0;
+    transition: all 1s;
 
     @media (min-width: 769px) {
       &:nth-child(4n) {
@@ -56,7 +57,7 @@ h1 {
   }
 
   @media (max-width: 576px) {
-    margin: 0 $mobile-content-margins;
+    margin: 0 $mobile-content-margins 10px $mobile-content-margins;
   }
 }
 
