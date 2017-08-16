@@ -1,6 +1,6 @@
 // variables
 $main-font: 'Raleway', sans-serif;
-$main-font-size: 18px;
+$main-font-size: 14px;
 $header-font-size: 40px;
 
 $main-content-margins: 50px;
@@ -15,11 +15,13 @@ html {
   font-family: $main-font;
   font-size: $main-font-size;
   box-sizing: border-box;
+  height: 100%;
 }
 
-.container {
+body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 h1 {
@@ -32,6 +34,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  flex: 1;
   margin: 0 $main-content-margins;
 
   img {
@@ -47,7 +50,7 @@ h1 {
 .footer {
   display: flex;
   padding: 20px $main-content-margins;
-  margin-top: auto;
+  // margin-top: auto;
   background-color: $main-color;
   color: $secondary-color;
 
@@ -55,7 +58,20 @@ h1 {
     flex: 1;
   }
 
+  .about {
+    a {
+      font-weight: bold;
+      color: $secondary-color;
+    }
+  }
+
   .social {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    img {
+      margin-left: 5px;
+    }
   }
 }
