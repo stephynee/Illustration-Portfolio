@@ -8,11 +8,12 @@ function fadeInRenderGallery(files) {
   const path = 'images/thumbs/';
   let time = 70;
 
-  files.forEach(file => {
+  files.forEach((file, i) => {
     const image = document.createElement('img');
 
     image.src = `${path}${file}`;
     image.dataset.filename = file;
+    image.dataset.index = i;
     image.style.opacity = 0;
 
     galleryDiv.appendChild(image);
@@ -27,17 +28,15 @@ function fadeInRenderGallery(files) {
 
 // display correct image in lightbox when gallery is clicked.
 function showLightBox(e, el) {
-  const {filename} = e.target.dataset;
-  const path = 'images/artwork/';
+  const {filename, index} = e.target.dataset;
+  const path = `images/artwork/${filename}`;
   const lightbox = document.createElement('div');
-  const img = document.createElement('img');
+  const img = createImage(path, index, lightbox);
   const exit = document.createElement('i');
-
-  img.src = `${path}${filename}`;
 
   exit.classList.add('fa');
   exit.classList.add('fa-times');
-  exit.addEventListener('click', closeLightbox);
+  exit.addEventListener('click', () => lightbox.remove());
 
   lightbox.classList.add('lightbox');
   lightbox.appendChild(exit);
@@ -46,9 +45,34 @@ function showLightBox(e, el) {
   el.appendChild(lightbox);
 }
 
-// remove the lightbox from DOM
-function closeLightbox() {
+// build lightbox image
+function createImage(path, index, el) {
+  const img = document.createElement('img');
 
+  img.src = path;
+  img.dataset.index = index;
+  img.addEventListener('click', () => cycleImages(img, el));
+
+  return img;
+}
+
+// cycle to next image in list.
+function cycleImages(currentImg, el) {
+  const index = parseInt(currentImg.dataset.index) >= images.length - 1 ? -1 : parseInt(currentImg.dataset.index);
+  const path = `images/artwork/${images[index + 1]}`;
+  const nextImg = createImage(path, index + 1, el);
+
+  currentImg.style.opacity = 0;
+  nextImg.style.opacity = 0;
+
+  setTimeout(() => {
+    currentImg.remove();
+    el.appendChild(nextImg);
+
+    setTimeout(() => {
+      nextImg.style.opacity = 1;
+    }, 50);
+  }, 60);
 }
 
 fadeInRenderGallery(images);
