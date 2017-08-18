@@ -1,7 +1,7 @@
 const images = ['illo1.png', 'illo2.png', 'illo3.png', 'illo4.png', 'illo5.png', 'illo6.png', 'illo7.png', 'illo8.png', 'illo9.png', 'illo10.png', 'illo11.png', 'illo12.png', 'illo13.png', 'illo14.png', 'illo15.png', 'illo16.png'];
 const gallery = document.querySelector('.gallery');
 const body = document.querySelector('body');
-console.log('app started');
+
 // display all images files on page with fade in effect
 function fadeInRenderGallery(files, galleryDiv) {
   const path = 'images/thumbs/';
@@ -27,7 +27,6 @@ function fadeInRenderGallery(files, galleryDiv) {
 
 // display correct image in lightbox when gallery is clicked.
 function showLightBox(e, el) {
-  console.log('show lightbox clicked');
   const {filename, index} = e.target.dataset;
   const path = `images/artwork/${filename}`;
   const lightbox = document.createElement('div');
@@ -42,7 +41,7 @@ function showLightBox(e, el) {
   lightbox.appendChild(exit);
   lightbox.appendChild(img);
 
-  el.appendChild(lightbox);
+  el.insertBefore(lightbox, document.querySelector('h1'));
 }
 
 // build lightbox image
