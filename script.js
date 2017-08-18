@@ -41,7 +41,7 @@ function showLightBox(e, el) {
   lightbox.appendChild(exit);
   lightbox.appendChild(img);
 
-  el.insertBefore(lightbox, document.querySelector('h1'));
+  el.insertBefore(lightbox, el.childNodes[0]);
 }
 
 // build lightbox image
