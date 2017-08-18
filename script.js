@@ -3,8 +3,7 @@ const gallery = document.querySelector('.gallery');
 const body = document.querySelector('body');
 
 // display all images files on page with fade in effect
-function fadeInRenderGallery(files) {
-  const galleryDiv = document.querySelector('.gallery');
+function fadeInRenderGallery(files, galleryDiv) {
   const path = 'images/thumbs/';
   let time = 70;
 
@@ -75,6 +74,6 @@ function cycleImages(currentImg, el) {
   }, 60);
 }
 
-fadeInRenderGallery(images);
+fadeInRenderGallery(images, gallery);
 
 gallery.addEventListener('click', e => showLightBox(e, body));
